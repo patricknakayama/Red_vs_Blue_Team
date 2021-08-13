@@ -6,9 +6,9 @@ This document contains the following details:
   - Tasks
   - Summary of Engagement
 - Tools and Technologies
-- Defensive Security Summary
-- Offensive Security Summary
-- Network Forensics Summary
+- [Defensive Security Summary](DefensiveSummary.md)
+- [Offensive Security Summary](OffensiveSummary.md)
+- [Network Forensics Summary](NetworkSummary.md)
 
 ---
 
@@ -58,12 +58,12 @@ The main purpose of this project is to simulate a SOC environment and demonstrat
 
 ### Defensive Security Summary
 
-  - DefensiveSummary.md contains the Blue Team Summary of Operations.
+  - [DefensiveSummary.md](DefensiveSummary.md) contains the Blue Team Summary of Operations.
 
 ### Offensive Security Summary
 
-  - OffensiveSummary.md contains the Red Team Summary of Operations.
+  - [OffensiveSummary.md](OffensiveSummary.md) contains the Red Team Summary of Operations.
 
 ### Network Forensics Summary
 
-  - NetworkSummary.md contains the Network Forensic Analysis Report.
+  - [NetworkSummary.md](NetworkSummary.md) contains the Network Forensic Analysis Report.

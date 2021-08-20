@@ -4,12 +4,9 @@
 - Network Topology
 - Description of Targets
 - Monitoring the Targets
-- Patterns of Traffic & Behavior
-- Suggestions for Going Further
+- Security Recommendations
 
 ### Network Topology
-
-![Network Topology](Images/Red_vs_Blue_Team_Network_Diagram.png)
 
 The following machines were identified on the network:
 
@@ -21,6 +18,8 @@ The following machines were identified on the network:
 | Capstone        	| 192.168.1.105  	| Ubuntu 18.04       	| Vulnerable Web Server                         	|
 | Target 1        	| 192.168.1.110  	| Debian GNU/Linux 8 	| WordPress Host                                	|
 | Target 2        	| 192.168.1.115  	| Debian GNU/Linux 8 	| WordPress Host                                	|
+
+![Network Topology](Images/Red_vs_Blue_Team_Network_Diagram.png)
 
 ---
 
@@ -67,14 +66,14 @@ Alert 3 is implemented as follows:
 
 ![CPU Usage Monitor](Images/CPU_alert.png)
 
-### Suggestions for Going Further
+### Security Recommendations
 - Each alert above pertains to a specific vulnerability/exploit. Alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, a patch has been recommended.
 
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
 
 - Enumeration and Brute Force Attacks
   - **Patch**: WordPress Hardening
-    - Lock out accounts after a number of failed attempts and implement multi-factor authentication (MFA).
+    - Lock out accounts after a predetermined number of failed attempts and implement multi-factor authentication (MFA).
     - Disable the WordPress REST API and XML-RPC if it’s not needed and configure the web server to block requests to /?author=<number>.
     - Prohibit exposure of /wp-admin and /wp-login.php.
 
@@ -99,5 +98,5 @@ The logs and alerts generated during the assessment suggest that this network is
     - Implementation of a Host Based Intrusion Detection System (HIDS)
 
   - **Why It Works**:
-    - Antiviruse software is effective in detection and removal of of malicious threats against computers and a robust security option in general which should be layered into a Defense in Depth approach to Cyber Security.
+    - Antivirus software is effective in detection and removal of malicious threats against computers and a robust security option in general which should be layered into a Defense in Depth approach to Cyber Security.
     - Host Based Intrusion Detection Systems monitor and analyze the entire file system of a host system and generate alerts if baseline deviation is detected.

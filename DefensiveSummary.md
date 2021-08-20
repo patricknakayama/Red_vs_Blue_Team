@@ -26,9 +26,11 @@ The following machines were identified on the network:
 
 ### Description of Targets
 
-The target of this attack was: `Target 1` (192.168.1.110).
+The targets of this attack were: `Target 1` (192.168.1.110) and `Target 2` (192.168.1.115).
 
-Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented.
+Both Targets expose the same WordPress site, however Target 2 has better security hardening.
+
+Targets 1 and 2 are Apache web servers and have SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented.
 
 ### Monitoring the Targets
 
@@ -66,7 +68,7 @@ Alert 3 is implemented as follows:
 ![CPU Usage Monitor](Images/CPU_alert.png)
 
 ### Suggestions for Going Further
-- Each alert above pertains to a specific vulnerability/exploit. Recall that alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, suggest a patch. E.g., implementing a blocklist is an effective tactic against brute-force attacks. It is not necessary to explain _how_ to implement each patch.
+- Each alert above pertains to a specific vulnerability/exploit. Alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, a patch has been recommended.
 
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
 

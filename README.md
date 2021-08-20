@@ -30,8 +30,9 @@ The main purpose of this project is to simulate a SOC environment and demonstrat
     - Configured `Kibana` alerts in `Elasticsearch Watcher` to monitor WordPress installation.
     - Scanned network with `netdiscover` to identify IP addresses of Targets.
     - Identified exposed ports and services with `Nmap`.
-    - Enumerated site with `WPScan`.
-    - Exploited vulnerable web server to obtain credentials from `MySQL` database and gain user shell via `SSH`.
+    - Enumerated site with `WPScan`, `Nikto`, and `Gobuster`.
+    - Exploited vulnerable web server on Target 1 to obtain credentials from `MySQL` database and gain user shell via `SSH`.
+    - Exploited PHPMailer Remote Code Execution vulnerability on Target 2 to open shell session using Ncat listener.
     - Performed network forensic analysis on live malicious traffic using `Wireshark` and `VirusTotal`.
     - Identified compromised machines and provided security recommendations.
 
@@ -48,9 +49,13 @@ The main purpose of this project is to simulate a SOC environment and demonstrat
 - Netdiscover
 - Nmap
 - WPScan
+- Nikto
+- Gobuster
+- Ncat
 - MySQL DB
 - John
 - SSH
+- Searchsploit
 - Wireshark
 - Virustotal
 

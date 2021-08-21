@@ -21,8 +21,6 @@ The following machines were identified on the network:
 | Target 1        	| 192.168.1.110  	| Debian GNU/Linux 8 	| WordPress Host                                	|
 | Target 2        	| 192.168.1.115  	| Debian GNU/Linux 8 	| WordPress Host                                	|
 
----
-
 ## Description of Targets
 
 The targets of this attack were: `Target 1` (192.168.1.110) and `Target 2` (192.168.1.115).
@@ -35,7 +33,7 @@ Targets 1 and 2 are Apache web servers and have SSH enabled, so ports 80 and 22 
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-#### **Alert 1: Excessive HTTP Errors**
+### **Alert 1: Excessive HTTP Errors**
 `WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE LAST 5 minutes`
 
 Alert 1 is implemented as follows:
@@ -46,7 +44,7 @@ Alert 1 is implemented as follows:
 
 ![Excessive HTTP Errors](Images/HTTP_error_alert.png)
 
-#### **Alert 2: HTTP Request Size Monitor**
+### **Alert 2: HTTP Request Size Monitor**
 `WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1 minute`
 Alert 2 is implemented as follows:
   - **Metric**: Sum of http.request.bytes over all documents
@@ -56,7 +54,7 @@ Alert 2 is implemented as follows:
 
 ![HTTP Request Size Monitor](Images/HTTP_requests_alert.png)
 
-#### **Alert 3: CPU Usage Monitor**
+### **Alert 3: CPU Usage Monitor**
 `WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR THE LAST 5 minutes`
 Alert 3 is implemented as follows:
   - **Metric**: Max of system.process.cpu.total.pct over all documents
@@ -67,9 +65,8 @@ Alert 3 is implemented as follows:
 ![CPU Usage Monitor](Images/CPU_alert.png)
 
 ## Security Recommendations
-- Each alert above pertains to a specific vulnerability/exploit. Alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, a patch has been recommended.
 
-The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
+The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. Alerts only detect malicious behavior, but do not stop it. Each alert above pertains to a specific vulnerability/exploit. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
 
 - Enumeration and Brute Force Attacks
   - **Patch**: WordPress Hardening

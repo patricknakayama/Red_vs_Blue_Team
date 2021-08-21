@@ -187,8 +187,6 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 
 ![Flag 4](Images/flag4.png)
 
----
-
 ## Target 2
 
 Target 2 exposes the same WordPress site as Target 1, but with better security hardening.

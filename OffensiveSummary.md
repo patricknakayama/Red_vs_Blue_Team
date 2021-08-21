@@ -274,6 +274,8 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Security Notice](Images/target2_security_notice.png)
 
+---
+
 #### Flag 2
 
   - `flag2.txt`: 6a8ed560f0b5358ecf844108048eb337
@@ -355,6 +357,8 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Flag 2](Images/target2_flag2.png)
 
+---
+
 #### Flag 3
 
   - `flag3.png`: a0f568aa9de277887f37730d71520d9b
@@ -379,6 +383,7 @@ The Red Team was able to penetrate `Target 2` and retrieve the following confide
 
 ![Flag 3](Images/target2_flag3.png)
 
+---
 
 #### Flag 4
 

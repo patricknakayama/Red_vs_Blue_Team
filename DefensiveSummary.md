@@ -6,7 +6,9 @@
 - Monitoring the Targets
 - Security Recommendations
 
-### Network Topology
+## Network Topology
+
+![Network Topology](Images/Red_vs_Blue_Team_Network_Diagram.png)
 
 The following machines were identified on the network:
 
@@ -19,11 +21,9 @@ The following machines were identified on the network:
 | Target 1        	| 192.168.1.110  	| Debian GNU/Linux 8 	| WordPress Host                                	|
 | Target 2        	| 192.168.1.115  	| Debian GNU/Linux 8 	| WordPress Host                                	|
 
-![Network Topology](Images/Red_vs_Blue_Team_Network_Diagram.png)
-
 ---
 
-### Description of Targets
+## Description of Targets
 
 The targets of this attack were: `Target 1` (192.168.1.110) and `Target 2` (192.168.1.115).
 
@@ -31,7 +31,7 @@ Both Targets expose the same WordPress site, however Target 2 has better securit
 
 Targets 1 and 2 are Apache web servers and have SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented.
 
-### Monitoring the Targets
+## Monitoring the Targets
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
@@ -66,7 +66,7 @@ Alert 3 is implemented as follows:
 
 ![CPU Usage Monitor](Images/CPU_alert.png)
 
-### Security Recommendations
+## Security Recommendations
 - Each alert above pertains to a specific vulnerability/exploit. Alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, a patch has been recommended.
 
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:

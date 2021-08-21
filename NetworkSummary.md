@@ -19,8 +19,6 @@ The Security team requested this analysis because they have evidence that people
 
 A number of machines from foreign subnets are sending traffic to this network. Your task is to collect evidence confirming the Security team's intelligence.
 
----
-
 ## Time Thieves 
 
 At least two users on the network have been wasting time on YouTube. Usually, IT wouldn't pay much mind to this behavior, but it seems these people have created their own web server on the corporate network. So far, Security knows the following about these time thieves:
@@ -71,8 +69,6 @@ You must inspect your traffic capture to answer the following questions:
 
 ![Time Thieves Virustotal](Images/TT_virustotal.png)
 
----
-
 ## Vulnerable Windows Machine
 
 The Security team received reports of an infected Windows host on the network. They know the following:
@@ -118,8 +114,6 @@ Inspect your traffic to answer the following questions in your network report:
 - Additional Traffic from 185.243.115.84 to infected host 172.16.4.205:
 
 ![Vulnerable Windows Machines Infection Traffic 2](Images/VWM_infection_traffic2.png)
-
----
 
 ## Illegal Downloads
 
